@@ -1,0 +1,10 @@
+Defect ID,Title,Environment URL,Browser,Environment,Precondition,Steps to Reproduce,Expected Result,Actual Result,Severity,Priority,Notes
+DEFECT 001,Login form accepts input but does not authenticate user,https://amazon-vee.netlify.app/login,Chromium (Playwright),Production (Netlify),User is on the login page,"1. Navigate to the login page
+2. Enter valid email address
+3. Enter valid password
+4. Click “Sign In”","User should be authenticated and redirected to home page or dashboard","User remains on login page with no success or error message displayed",High,High,"UI elements accept input correctly
+No validation or authentication feedback is provided
+Indicates missing backend integration or disabled authentication logic"
+DEFECT 002,No validation feedback displayed for invalid login credentials,https://amazon-vee.netlify.app/login,Chromium (Playwright),Production (Netlify),User is on the login page,"1. Navigate to login page
+2. Enter invalid email/password
+3. Click “Sign In”","User should see an error message indicating invalid credentials","No error message displayed; page remains unchanged",Medium,Medium,N/A
