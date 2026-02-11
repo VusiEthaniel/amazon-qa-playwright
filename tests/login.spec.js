@@ -16,7 +16,6 @@ test.describe('Amazon Clone - Sign In (Unauthenticated User)', () => {
     await page.getByRole('button', { name: /sign in/i }).click();
 
     // Expected behaviour: user should be guided to sign up
-    // Since backend is not implemented, assert current behaviour
     await expect(page).toHaveURL(/login/);
   });
 

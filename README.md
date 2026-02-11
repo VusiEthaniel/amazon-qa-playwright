@@ -1,132 +1,142 @@
-# Amazon Clone – QA Automation (Playwright)
+# Amazon Clone – QA & Automation Project
 
-This repository contains automated UI tests for an Amazon clone application using **Playwright with JavaScript**.  
-The project focuses on **test analysis, UI automation, and defect identification**, rather than forcing unimplemented functionality.
+## Project Overview
+This project demonstrates a complete Quality Assurance approach for an Amazon Clone web application.  
+It includes **test design, manual test cases, defect management, and automated UI testing** using Playwright with JavaScript.
 
----
+The focus is on validating **real user-facing behaviour**, identifying functional and usability gaps, and providing evidence-based reporting.
 
-## Application Under Test
-Amazon Clone (deployed):
+Application under test:  
 https://amazon-vee.netlify.app
 
 ---
 
-## Testing Scope
-
-### Authentication (Sign In)
-- Navigation from Home to Sign In page
-- Validation that users can enter credentials
-- Verification of system behaviour for unauthenticated users
-
-> Note: Login currently depends on prior account creation. Tests are aligned to current behaviour and missing logic is logged as defects.
+## Testing Objectives
+- Validate core UI functionality and navigation
+- Ensure users are not blocked by usability or accessibility issues
+- Identify functional limitations and gaps early
+- Maintain honest and reproducible defect reporting
+- Support regression testing through automation
 
 ---
 
-## Tools & Technologies
-- Playwright
-- JavaScript
-- Node.js
-- Git & GitHub
+## Scope of Testing
+
+### In Scope
+- Homepage UI validation
+- Navigation and routing
+- Sign In and Create Account (unauthenticated behaviour)
+- Cart interaction (Add to Cart – observed behaviour)
+- Usability and accessibility-lite checks
+
+### Out of Scope
+- Payment and checkout
+- Backend services and databases
+- Performance and load testing
+- Full WCAG accessibility compliance
 
 ---
 
-## Test Evidence
-Playwright is configured to capture:
-- Video recordings of test runs
-- Screenshots
-- Execution traces
-
-This provides clear and auditable test evidence for both passing and failing scenarios.
-
----
-
-## Defects Identified
-
-The following defects were identified during UI-level testing.  
-Tests were intentionally aligned to observed system behaviour, and missing or incomplete functionality was logged as defects rather than forcing failing automation.
+## Test Types Covered
+- Smoke Testing
+- Functional Testing
+- UI Content Validation
+- Navigation Testing
+- Usability & Accessibility-lite Testing
+- Regression Testing
 
 ---
 
-### DEF-001: Login does not authenticate unregistered users
-**Area:** Authentication – Sign In  
-- **Expected:** User should be guided to create an account or shown a validation message  
-- **Actual:** User remains on login page with no feedback  
-- **Severity:** Medium  
-- **Status:** Open  
+## Automation Framework
+- **Tool:** Playwright
+- **Language:** JavaScript
+- **Browser:** Chromium
+- **Approach:**  
+  - Tests simulate real user journeys  
+  - No deep-link assumptions where UI rendering depends on navigation  
+  - Stable selectors and refactored helpers used for maintainability  
 
 ---
 
-### DEF-002: No validation feedback for invalid login credentials
-**Area:** Authentication – Sign In  
-- **Expected:** Error message displayed for incorrect email or password  
-- **Actual:** No validation message shown  
-- **Severity:** Medium  
-- **Status:** Open  
+## Project Structure
+amazon-qa-playwright/
+│
+├── tests/
+│ ├── homepage.spec.js
+│ ├── navigation.spec.js
+│ ├── login.spec.js
+│ ├── signup.spec.js
+│ ├── cart.spec.js
+│ └── usability.spec.js
+│
+├── helpers/
+│ └── navigation.js
+│
+├── docs/
+│ ├── test-design/
+│ │ └── Amazon_Test_Design_FINAL.docx
+│ ├── test-cases/
+│ │ └── Amazon_Test_Cases_UPDATED.xlsx
+│ └── defects/
+│ └── Amazon_Defect_Log_FINAL.xlsx
+│
+├── playwright.config.js
+└── README.md
 
 ---
 
-### DEF-003: Create Account button does not trigger navigation or registration flow
-**Area:** Authentication – Create Account  
-- **Expected:** User should be redirected to account creation page or shown registration form  
-- **Actual:** Clicking “Create your Amazon Account” produces no navigation or UI change  
-- **Severity:** High  
-- **Status:** Open  
+## Test Documentation
+The following QA artefacts are version-controlled in this repository:
+
+- **Test Design:**  
+  `docs/test-design/Amazon_Test_Design_FINAL.docx`
+- **Test Cases:**  
+  `docs/test-cases/Amazon_Test_Cases_UPDATED.xlsx`
+- **Defect Log:**  
+  `docs/defects/Amazon_Defect_Log_FINAL.xlsx`
 
 ---
 
-### DEF-004: Account creation does not persist new users
-**Area:** Authentication – Create Account  
-- **Expected:** Newly created user should be saved and able to log in  
-- **Actual:** No confirmation or persistence of user data observed  
-- **Severity:** Medium  
-- **Status:** Open  
+## Defect Management
+Defects are logged only when:
+- They are reproducible
+- They represent real functional or usability gaps
+- They have clear business impact
+
+Areas such as Homepage UI, Navigation, and Usability testing passed without defects and are documented accordingly.
 
 ---
 
-### DEF-005: Cart cannot be viewed after adding items
-**Area:** Cart  
-- **Expected:** User should be able to navigate to cart after adding items  
-- **Actual:** No cart navigation or cart view available  
-- **Severity:** High  
-- **Status:** Open  
+## Test Execution & Evidence
+- Automated tests are executed using Playwright
+- Evidence captured includes:
+  - Screenshots
+  - Videos
+  - Traces
+  - HTML reports
 
----
-
-### DEF-006: Items cannot be removed from cart
-**Area:** Cart  
-- **Expected:** User should be able to remove items from cart  
-- **Actual:** No remove functionality available  
-- **Severity:** Medium  
-- **Status:** Open  
-
----
-
-### DEF-007: No visual feedback when adding items to cart
-**Area:** Cart  
-- **Expected:** Visual confirmation (cart count, message, or state change) after adding item  
-- **Actual:** No visible feedback provided to user  
-- **Severity:** Medium  
-- **Status:** Open  
+Reports can be viewed locally using:
+npx playwright show-report
 
 
 ---
 
-## ▶️ How to Run Tests Locally
-
-1. Clone the repository  
-2. Install dependencies:
-npm install
-3.  Run tests:
-npx playwright test
-4. To debug visually:
-npx playwright test --headed --debug
+## Current Test Status
+- All automated tests passing
+- Defects logged for identified functional limitations
+- Documentation fully aligned with executed tests
 
 ---
 
-## Notes
-This project is part of a QA portfolio and demonstrates:
-- Test case design
-- UI automation
-- Defect analysis
-- Evidence-driven testing
+## Key QA Principles Demonstrated
+- Test isolation and parallel-safe automation
+- Realistic user-flow testing
+- Honest handling of incomplete functionality
+- Clear traceability between tests, defects, and documentation
+- Maintainable test structure using shared helpers
 
+---
+
+## Author
+Vusi Mushwana  
+ISTQB Certified Tester – Foundation Level

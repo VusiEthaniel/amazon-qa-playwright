@@ -1,9 +1,10 @@
 const { test, expect } = require('@playwright/test');
+const { goToLogin, goToHome } = require('../helpers/navigation');
 
 test.describe('Amazon Clone - Usability & Accessibility Lite', () => {
 
   test('Sign In inputs are accessible and usable', async ({ page }) => {
-    await page.goto('/login');
+    await goToLogin(page);
 
     const emailInput = page.locator('input').first();
     const passwordInput = page.locator('input[type="password"]');
@@ -16,18 +17,15 @@ test.describe('Amazon Clone - Usability & Accessibility Lite', () => {
   });
 
   test('Primary buttons are visible and enabled', async ({ page }) => {
-    await page.goto('/');
+    await goToHome(page);
 
     const buttons = page.locator('button');
-
-    // At least one button should be usable
     await expect(buttons.first()).toBeVisible();
     await expect(buttons.first()).toBeEnabled();
   });
 
   test('User is not blocked by hidden or disabled UI elements', async ({ page }) => {
-    await page.goto('/');
-
+    await goToHome(page);
     await expect(page.locator('body')).toBeVisible();
   });
 
